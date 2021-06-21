@@ -8,6 +8,7 @@ com\itheima\pojo\Setmeal.class
 com\itheima\pojo\Permission.class
 com\itheima\pojo\CheckGroup.class
 com\itheima\constant\MessageConstant.class
+com\itheima\constant\RedisConstant.class
 com\itheima\pojo\Member.class
 com\itheima\pojo\Order.class
 com\itheima\entiy\Result.class

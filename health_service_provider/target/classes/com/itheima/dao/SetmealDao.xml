@@ -20,7 +20,13 @@
                       values
         (#{setmealId},#{checkgroupId})
     </insert>
-
+    <!--   根据条件查询 -->
+    <select id="findByCondition" parameterType="string" resultType="com.itheima.pojo.Setmeal">
+        select * from t_setmeal
+        <if test="value != null and value.length > 0">
+            where code = #{value} or name = #{value} or helpCode = #{value}
+        </if>
+    </select>
 
 
 </mapper>
