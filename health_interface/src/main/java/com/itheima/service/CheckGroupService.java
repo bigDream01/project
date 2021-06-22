@@ -3,7 +3,6 @@ package com.itheima.service;
 
 import com.itheima.entiy.PageResult;
 import com.itheima.entiy.QueryPageBean;
-import com.itheima.entiy.Result;
 import com.itheima.pojo.CheckGroup;
 
 import java.util.List;

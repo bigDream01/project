@@ -2,6 +2,7 @@ package com.itheima.dao;
 
 import com.github.pagehelper.Page;
 import com.itheima.pojo.CheckItem;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
@@ -14,6 +15,7 @@ import java.util.List;
  *@author：bigDream
  *@date：2021-06-10 19:59
  **/
+@Mapper
 public interface CheckItemDao {
     public void add(CheckItem checkItem);
     public Page<CheckItem> selectByCondition(String queryString);

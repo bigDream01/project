@@ -90,6 +90,7 @@ public class CheckGroupController {
     @RequestMapping("/findCheckItemByCheckGroupId")
     public Result findCheckItemByCheckGroupId(Integer id) {
         List<Integer> CheckItemIds = null;
+
         try {
             CheckItemIds = checkGroupService.findCheckItemByCheckGroupId(id);
         } catch (Exception e) {

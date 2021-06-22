@@ -1,7 +1,6 @@
 package com.itheima.dao;
 
 import com.github.pagehelper.Page;
-import com.itheima.entiy.PageResult;
 import com.itheima.pojo.CheckGroup;
 
 import java.util.List;
