@@ -6,15 +6,18 @@ import com.itheima.pojo.OrderSetting;
 import com.itheima.service.OrderSettingService;
 import com.itheima.entiy.Result;
 import com.itheima.utils.POIUtils;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.ws.rs.PathParam;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /*
  *
@@ -55,6 +58,26 @@ public class OrderSettingController {
             return new Result(false, MessageConstant.IMPORT_ORDERSETTING_FAIL);
         }
         return new Result(true, MessageConstant.IMPORT_ORDERSETTING_SUCCESS);
+    }
+
+    /**
+     * 根据月份查询数据
+     * @param date
+     * @return
+     */
+    @RequestMapping("/getOrderSettingByMonth")
+    public Result getOrderSettingByMonth(String date) {//date格式 yy-MM
+
+        List<Map> list = null;
+        try {
+            list = orderSettingService.getOrderSettingByMonth(date);
+        } catch (Exception e) {
+            e.printStackTrace();
+
+            return new Result(false,MessageConstant.GET_ORDERSETTING_FAIL);
+        }
+
+        return new Result(true,MessageConstant.GET_ORDERSETTING_SUCCESS,list);
     }
 
 }

@@ -7,7 +7,7 @@ import com.itheima.service.OrderSettingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import java.util.*;
 
 /*
  *
@@ -44,6 +44,45 @@ public class OrderSettingServiceImpl implements OrderSettingService {
         }
     }
 
+    /**
+     * 根据月份查询预约数据
+     *
+     * @param date
+     * @return
+     */
+    @Override
+    public List<Map> getOrderSettingByMonth(String date) {
+
+
+        String begin = date + "-1";
+        String end = date + "-31";
+
+        Map<String, String> map = new HashMap<>();
+
+        map.put("begin", begin);
+        map.put("end", end);
+
+        //页面需要的数据
+        List<Map> res = new ArrayList<>();
+
+        //得到OrderSetting数据，需要转化为页面需要的数据
+        List<OrderSetting> list = orderSettingDao.getOrderSettingByMonth(map);
+
+        //转化数据
+        if (list != null && list.size() > 0) {
+            for (OrderSetting orderSetting : list) {
+
+                Map<String, Object> temp = new HashMap<>();
+                temp.put("date", orderSetting.getOrderDate().getDate());
+                temp.put("number", orderSetting.getNumber());
+                temp.put("reservations", orderSetting.getReservations());
+                res.add(temp);
+            }
+
+        }
+
+        return res;
+    }
 
 
 }
