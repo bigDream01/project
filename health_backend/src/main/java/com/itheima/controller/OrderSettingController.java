@@ -6,10 +6,7 @@ import com.itheima.pojo.OrderSetting;
 import com.itheima.service.OrderSettingService;
 import com.itheima.entiy.Result;
 import com.itheima.utils.POIUtils;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.ws.rs.PathParam;
@@ -79,5 +76,21 @@ public class OrderSettingController {
 
         return new Result(true,MessageConstant.GET_ORDERSETTING_SUCCESS,list);
     }
+
+    @RequestMapping("/editNumberByDate")
+    public Result editNumberByDate(@RequestBody OrderSetting orderSetting) {//date格式 yy-MM
+
+        try {
+            orderSettingService.editNumberByDate(orderSetting);
+        } catch (Exception e) {
+            e.printStackTrace();
+           return  new Result(false,MessageConstant.ORDERSETTING_FAIL);
+        }
+
+        return new Result(true,MessageConstant.ORDERSETTING_SUCCESS);
+    }
+
+
+
 
 }
